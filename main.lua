@@ -161,14 +161,9 @@ local function fadeInUI(ui)
             if child:IsA("TextLabel") then
                 child.TextTransparency = 1
                 child.BackgroundTransparency = 1 -- Always transparent for textlabels
-            elseif child:IsA("TextButton") then
-                goal.BackgroundTransparency = uiVisible and 0 or 1
-                
-                if child.Name == "Enable" then
-                    child.BackgroundTransparency = 0 -- Keep toggle indicator visible
-                else
-                    child.BackgroundTransparency = 1
-                end
+        if child:IsA("TextButton") then
+            goal.TextTransparency = uiVisible and 0 or 1
+            goal.BackgroundTransparency = uiVisible and 0 or 1 -- Allow fading out for toggle buttons too
             elseif child:IsA("ImageLabel") and child.Name == "Icon" then
                 child.ImageTransparency = 1
             else
@@ -303,4 +298,3 @@ local loadModule = loadstring
 
 -- Return the main ScreenGui and the loadModule function
 return LUAX["1"], loadModule
-
