@@ -151,7 +151,7 @@ local function fadeInUI(ui)
                 props.BackgroundTransparency = 1
             elseif child:IsA("TextButton") then
                 props.TextTransparency = 0
-                props.BackgroundTransparency = 1
+                props.BackgroundTransparency = 0
             elseif child:IsA("ImageLabel") and child.Name == "Icon" then
                 props.ImageTransparency = 0
             else
