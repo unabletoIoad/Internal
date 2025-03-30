@@ -182,7 +182,7 @@ local function fadeInUI(ui)
                 props.BackgroundTransparency = 1
             elseif child:IsA("TextButton") then
                 props.TextTransparency = 0
-                props.BackgroundTransparency = 1  -- Toggle buttons should fade out fully (background)
+                props.BackgroundTransparency = 0  -- Toggle buttons should fade out fully (background)
             elseif child:IsA("ImageLabel") and child.Name == "Icon" then
                 props.ImageTransparency = 0
             else
