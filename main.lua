@@ -160,10 +160,10 @@ local function fadeInUI(ui)
         if child:IsA("GuiObject") then
             if child:IsA("TextLabel") then
                 child.TextTransparency = 1
-                child.BackgroundTransparency = 1 -- Always transparent for textlabels
-        if child:IsA("TextButton") then
-            goal.TextTransparency = uiVisible and 0 or 1
-            goal.BackgroundTransparency = uiVisible and 0 or 1 -- Allow fading out for toggle buttons too
+                child.BackgroundTransparency = 1 -- Always transparent for text labels
+            elseif child:IsA("TextButton") then
+                child.TextTransparency = 1
+                child.BackgroundTransparency = 0 -- Toggle buttons start visible
             elseif child:IsA("ImageLabel") and child.Name == "Icon" then
                 child.ImageTransparency = 1
             else
@@ -172,13 +172,14 @@ local function fadeInUI(ui)
         end
     end
 
+    -- Rest of the fadeInUI function remains unchanged
     local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
     for _, child in ipairs(ui:GetDescendants()) do
         if child:IsA("GuiObject") then
             local props = {}
             if child:IsA("TextLabel") then
                 props.TextTransparency = 0
-                props.BackgroundTransparency = 1 -- Always keep textlabel backgrounds hidden
+                props.BackgroundTransparency = 1
             elseif child:IsA("TextButton") then
                 props.TextTransparency = 0
                 if child.Name ~= "Enable" then
