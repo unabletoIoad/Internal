@@ -162,7 +162,6 @@ local function fadeInUI(ui)
                 child.TextTransparency = 1
                 child.BackgroundTransparency = 1 -- Always transparent for textlabels
             elseif child:IsA("TextButton") then
-                goal.TextTransparency = uiVisible and 0 or 1
                 goal.BackgroundTransparency = uiVisible and 0 or 1
                 
                 if child.Name == "Enable" then
